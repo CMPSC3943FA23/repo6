@@ -1,0 +1,10 @@
+USE hobby_harmony;
+
+CREATE TABLE assets (
+	ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	FriendlyName VARCHAR(255) NOT NULL,
+	Manufacturer VARCHAR(255),
+	Model VARCHAR(255),
+	AssetType VARCHAR(255),
+	Location VARCHAR(255)
+);
