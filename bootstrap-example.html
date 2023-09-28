@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bootstrap 5 Example Page</title>
+
+        <!-- These meta tags are important for Bootstrap pages: -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- The Bootstrap include files start here: -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="mt-4 p-5 bg-dark text-white rounded">
+            <!--
+                Each of the classes on this div affects the appearance of the
+                big box at the top
+            -->
+                <h1>Bootstrap 5 Example Page</h1>
+                <p>
+                    The source code for this page should help you get started
+                    in Bootstrap if you have never used it before.
+                </p>
+            </div>
+            <p class="mt-4"> <!-- This class adds a small margin -->
+                Bootstrap seems complex at first glance, but really, it's just
+                a fancy JavaScript and CSS library that makes websites
+                look pretty and use responsive design easily.
+            </p>
+            <p>
+                It also has built-in dark mode: 
+                <button type="button" class="btn btn-dark" onclick=
+                "document.getElementsByTagName('html')[0].setAttribute('data-bs-theme', 'dark');">Dark Mode</button>
+                <button type="button" class="btn btn-light" onclick=
+                "document.getElementsByTagName('html')[0].setAttribute('data-bs-theme', null);">Light Mode</button>
+            </p>
+            <p>
+                It styles existing HTML tags in useful ways, and it offers plenty
+                of other features, too.
+            </p>
+            <p>
+                Hit <kbd>F12</kbd> to check out the source code! Or,
+                <a href="https://www.w3schools.com/bootstrap5/index.php">click here</a>
+                to view a Bootstrap 5 tutorial.
+            </p>
+        </div>
+    </body>
+</html>

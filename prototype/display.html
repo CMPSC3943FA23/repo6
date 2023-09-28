@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Displaying "All Assets" - Hobby Harmony</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="display.html">Display</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create.html">Create</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-lg pt-5">
+            <div class="alert alert-success alert-dismissible fade show">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                Item <strong>GeForce 3</strong> with ID <strong>3</strong> successfully updated.
+            </div>
+            <div class="d-flex pb-3">
+                <div class="flex-fill"><h3>Contents of "All Assets":</h3></div>
+                <div class="align-self-end"><input type="text" class="form-control" placeholder="Type to search..."></div>
+                <div class="align-self-end"><button class="btn btn-primary"><i class="bi-search"></i></button></div>
+            </div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th width="45px">UID</th>
+                        <th>Friendly Name</th>
+                        <th>Manufacturer</th>
+                        <th>Model</th>
+                        <th>Location</th>
+                        <th>Type</th>
+                        <th width="75px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Windows 98 PC</td>
+                        <td>Dell</td>
+                        <td>Dimension 4100</td>
+                        <td>Upstairs Closet</td>
+                        <td>Computer</td>
+                        <td>
+                            <a href="#"><i class="bi-pencil-square"></i></a>
+                            <a href="#"><i class="bi-archive"></i></a>
+                            <a href="#"><i class="bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Windows 98 Hard Drive</td>
+                        <td>Quantum</td>
+                        <td>Fireball Plus 30 GB</td>
+                        <td><a href="#">Windows 98 PC</a></td>
+                        <td>Hard Drive</td>
+                        <td>
+                            <a href="#"><i class="bi-pencil-square"></i></a>
+                            <a href="#"><i class="bi-archive"></i></a>
+                            <a href="#"><i class="bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr class="table-success">
+                        <td>3</td>
+                        <td>GeForce 3</td>
+                        <td>Nvidia</td>
+                        <td>GeForce 3 Ti500</td>
+                        <td><a href="#">Windows 98 PC</a></td>
+                        <td>Graphics Card</td>
+                        <td>
+                            <a href="#"><i class="bi-pencil-square"></i></a>
+                            <a href="#"><i class="bi-archive"></i></a>
+                            <a href="#"><i class="bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Windows 7 PC</td>
+                        <td>Gateway</td>
+                        <td>DX4300-11</td>
+                        <td>Downstairs Closet</td>
+                        <td>Computer</td>
+                        <td>
+                            <a href="#"><i class="bi-pencil-square"></i></a>
+                            <a href="#"><i class="bi-archive"></i></a>
+                            <a href="#"><i class="bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Windows 7 Hard Drive</td>
+                        <td>Western Digital</td>
+                        <td>Caviar Green 1 TB</td>
+                        <td><a href="#">Windows 7 PC</a></td>
+                        <td>Hard Drive</td>
+                        <td>
+                            <a href="#"><i class="bi-pencil-square"></i></a>
+                            <a href="#"><i class="bi-archive"></i></a>
+                            <a href="#"><i class="bi-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-secondary">This is what the asset list might look like just after the user has edited an asset and saved it.</p>
+        </div>
+    </body>
+</html>
