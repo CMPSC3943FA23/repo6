@@ -17,3 +17,5 @@ None of these serve a functional purpose in the finished product.
 A very simple HTML page that also serves as Bootstrap 5 reference.  
 ### /db_init.php  
 A script to create the database and its tables.  
+### /db_insert_test.php  
+A test script that attempts to add an entry to the database and then retrieve the current entries.  

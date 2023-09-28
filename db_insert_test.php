@@ -32,10 +32,10 @@ try {
         `Model`,
         `AssetType`)
         VALUES (
-        `My MacBook`,
-        `Apple, Inc.`,
-        `Late 2009 MacBook`,
-        `Laptop`);";
+        'My MacBook',
+        'Apple, Inc.',
+        'Late 2009 MacBook',
+        'Laptop');";
     $conn->exec($sql);
     $last_id = $conn->lastInsertId();
     echo "Asset with ID " . $last_id . " added successfully.<br>";
@@ -45,7 +45,7 @@ try {
         $stmt->execute();
 
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
+        echo "<tr><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th></tr>";
 
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
