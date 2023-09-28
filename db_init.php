@@ -1,5 +1,11 @@
 <?php
-require 'config/db_cfg.php';
+try {
+    require 'config/db_cfg.php';
+}
+catch(Error $e) {
+    echo "Database configuration file cannot be loaded: " . $e->getMessage();
+    die();
+}
 
 try {
     // Create database
@@ -11,7 +17,7 @@ try {
     echo "Database &quot;" . $dbname . "&quot; created successfully.<br>";
 
     // Create tables
-    $conn = new PDO("mysql:host=$dbhost;dbname-$dbname", $dbuser, $dbpass);
+    $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "USE `$dbname`;
@@ -27,7 +33,8 @@ try {
     $conn->exec($sql);
     echo "Table &quot;assets&quot; created successfully.<br>";
 
-} catch(PDOException $e) {
+}
+catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
 
