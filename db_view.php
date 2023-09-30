@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class="container mt-4">
+      <p>This page is not to be used in the final product. It is only for testing database functionality.</p>
       <?php
       try {
           require 'config/db_cfg.php';
@@ -45,25 +46,11 @@
           $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-          /*$sql = "INSERT INTO `assets` (
-              `FriendlyName`,
-              `Manufacturer`,
-              `Model`,
-              `AssetType`)
-              VALUES (
-              'My MacBook',
-              'Apple, Inc.',
-              'Late 2009 MacBook',
-              'Laptop');";
-          $conn->exec($sql);
-          $last_id = $conn->lastInsertId();
-          echo "Asset with ID " . $last_id . " added successfully.<br>";*/
-
           try {
               $stmt = $conn->prepare("SELECT * FROM assets");
               $stmt->execute();
 
-              echo "<table class='table table-striped table-responsive-md>";
+              echo "<table class='table table-striped table-responsive-md'>";
               echo "<tr><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th></tr>";
 
               $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
