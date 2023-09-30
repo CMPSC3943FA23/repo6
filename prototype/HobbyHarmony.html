@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobby Harmony</title>
+
+    <!-- BOOTSTRAP LINK -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--DARK MODE STYLES-->
+    <style>
+        body.dark-mode {
+            background-color: #2c2c2c;
+            color: #fff;
+        }
+
+        body.dark-mode .card {
+            background-color: #3e3e3e;
+        }
+    </style>
+    <link rel="icon" href="\Pictures\favicon.ico" type="image/x-icon">
+</head>
+
+<!--BEGINNING OF HTML-->
+
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="display-4">Hobby Harmony</h1>
+            <button id="toggleMode" class="btn btn-secondary">Toggle Light/Dark Mode</button>
+        </div>
+        <form id="hobbyForm">
+            <div class="form-group">
+                <label for="itemName">Name</label>
+                <input type="text" class="form-control" id="itemName" required>
+            </div>
+            <div class="form-group">
+                <label for="itemDescription">Description</label>
+                <textarea class="form-control" id="itemDescription" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="itemPhotoURL">Photo URL</label>
+                <input type="url" class="form-control" id="itemPhotoURL" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Item</button>
+        </form>
+        <button id="sortByName" class="btn btn-secondary mt-1">Sort By Name</button>
+        <div id="itemsContainer" class="row mt-5">
+            <!-- ITEMS WILL APPEAR HERE -->
+        </div>
+    </div>
+
+    <!--EDIT FUNCTION-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="editForm">
+                  <input type="hidden" id="editItemId">
+                  <div class="form-group">
+                      <label for="editItemName">Name</label>
+                      <input type="text" class="form-control" id="editItemName" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="editItemDescription">Description</label>
+                      <textarea class="form-control" id="editItemDescription" rows="3" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
+    
+
+<!--END OF HTML-->
+
+
+    <!--SCRIPTS-->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        
+        // CONTENT LOAD
+        document.addEventListener("DOMContentLoaded", function() {
+            const items = loadItemsFromLocalStorage() || [];
+            renderItems(items);
+
+            // Check for dark mode state in localStorage
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        // LIGHT/DARK MODE BUTTON
+        document.querySelector("#toggleMode").addEventListener("click", function() {
+            document.body.classList.toggle('dark-mode');
+
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // SUBMIT BUTTON
+        document.querySelector("#hobbyForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const name = document.querySelector("#itemName").value;
+            const description = document.querySelector("#itemDescription").value;
+            const photoURL = document.querySelector("#itemPhotoURL").value;
+
+            const id = saveItem(name, description, photoURL);
+            displayItem(name, description, photoURL, id);
+
+            document.querySelector("#hobbyForm").reset();
+        });
+
+        // DELETE BUTTON
+        document.querySelector("#itemsContainer").addEventListener("click", function(e) {
+            if (e.target.classList.contains('deleteItemBtn')) {
+                const card = e.target.closest('.card');
+                const itemId = card.getAttribute('data-id');
+
+                deleteItemFromLocalStorage(itemId);
+                card.remove();
+            }
+        });
+
+        // EDIT BUTTON
+        document.querySelector("#itemsContainer").addEventListener("click", function(e) {
+            if (e.target.classList.contains('editItemBtn')) {
+                const card = e.target.closest('.card');
+                const itemId = card.getAttribute('data-id');
+                const name = card.querySelector(".card-title").textContent;
+                const description = card.querySelector(".card-text").textContent;
+
+                document.querySelector("#editItemId").value = itemId;
+                document.querySelector("#editItemName").value = name;
+                document.querySelector("#editItemDescription").value = description;
+
+                $('#editModal').modal('show');
+            }
+        });
+        
+        // SORT FUNCTION
+        function sortItemsByName(items) {
+            return items.sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        document.querySelector("#sortByName").addEventListener("click", function() {
+            // Fetch items, sort them, and then re-render the sorted list
+            
+            const items = loadItemsFromLocalStorage();
+            const sortedItems = sortItemsByName(items);
+            renderItems(sortedItems);
+        });
+
+        function renderItems(items) {
+            // Clear existing items
+            document.querySelector("#itemsContainer").innerHTML = '';
+
+            // Display each item
+            items.forEach(item => displayItem(item.name, item.description, item.photoURL, item.id));
+        }
+
+        // SAVE EDIT IN localStorage
+        document.querySelector("#editForm").addEventListener("submit", function(e) {e.preventDefault();
+    
+            const id = document.querySelector("#editItemId").value;
+            const newName = document.querySelector("#editItemName").value;
+            const newDescription = document.querySelector("#editItemDescription").value;
+
+            // Update localStorage
+            const items = JSON.parse(localStorage.getItem("hobbyItems"));
+            const item = items.find(item => item.id === id);
+            item.name = newName;
+            item.description = newDescription;
+            localStorage.setItem("hobbyItems", JSON.stringify(items));
+
+            // Update displayed item
+            const card = document.querySelector(`[data-id="${id}"]`);
+            card.querySelector(".card-title").textContent = newName;
+            card.querySelector(".card-text").textContent = newDescription;
+
+            $('#editModal').modal('hide');
+        });
+
+        // SAVE FUNCTION
+        function saveItem(name, description, photoURL) {
+            let items = [];
+            if (localStorage.getItem("hobbyItems")) {
+                items = JSON.parse(localStorage.getItem("hobbyItems"));
+            }
+            const id = new Date().getTime().toString(); // using timestamp as a unique id
+            items.push({ id, name, description, photoURL });
+            localStorage.setItem("hobbyItems", JSON.stringify(items));
+            return id;
+        }
+
+        // DISPLAY FUNCTION
+        function displayItem(name, description, photoURL, id) {
+            const card = `
+                <div class="col-md-6">
+                    <div class="card mb-3" data-id="${id}">
+                        <img src="${photoURL}" class="card-img-top" alt="${name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${name}</h5>
+                            <p class="card-text">${description}</p>
+                         <button class="btn btn-danger deleteItemBtn">Delete</button>
+                            <button class="btn btn-warning editItemBtn mr-2">Edit</button>
+                        </div>
+                    </div>
+                </div>`;
+            document.querySelector("#itemsContainer").insertAdjacentHTML("beforeend", card);
+        }
+
+        // DELETE FUNCTION
+        function deleteItemFromLocalStorage(itemId) {
+            const items = JSON.parse(localStorage.getItem("hobbyItems"));
+            const updatedItems = items.filter(item => item.id !== itemId);
+            localStorage.setItem("hobbyItems", JSON.stringify(updatedItems));
+        }
+
+        // LOCAL STORAGE
+        function loadItemsFromLocalStorage() {
+            if (localStorage.getItem("hobbyItems")) {
+                const items = JSON.parse(localStorage.getItem("hobbyItems"));
+                    return items;
+                }
+                    return [];
+            }
+
+    </script> 
+</body>
+
+</html>
