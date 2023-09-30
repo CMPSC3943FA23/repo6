@@ -8,7 +8,7 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-4">
     <?php
     try {
         require 'config/db_cfg.php';
@@ -48,6 +48,9 @@
         "<div class='alert alert-success'>
         Table &quot;assets&quot; created successfully.
         </div>";
+
+        echo
+        "<button type='button' class='btn btn-primary'>Return</button>";
     }
     catch(PDOException $e) {
         echo
