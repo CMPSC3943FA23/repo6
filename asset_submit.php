@@ -40,21 +40,29 @@
 
         try {
             $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+            $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-            $sql = "INSERT INTO `assets` (
+
+            $stmt = $conn->prepare("INSERT INTO `assets` (
                 `FriendlyName`,
                 `Manufacturer`,
                 `Model`,
                 `AssetType`,
                 `Location`)
                 VALUES (
-                '$friendly_name',
-                '$manufacturer',
-                '$model',
-                '$asset_type',
-                '$location');";
-            $conn->exec($sql);
+                :friendly_name,
+                :manufacturer,
+                :model,
+                :asset_type,
+                :location);");
+                
+            $stmt->execute([
+                'friendly_name' => $friendly_name,
+                'manufacturer' => $manufacturer,
+                'model' => $model,
+                'asset_type' => $asset_type,
+                'location' => $location]);
+                
             $last_id = $conn->lastInsertId();
             echo
             "<div class='alert alert-success'>
@@ -64,7 +72,7 @@
         catch(PDOException $e) {
             echo
             "<div class='alert alert-danger'>
-            <strong>Error:</strong> " . $sql . "<br>" . $e->getMessage() .
+            <strong>Error:</strong> " . $e->getMessage() .
             "</div>";
         }
         
