@@ -18,7 +18,10 @@ A pseudo-functional prototype, mainly for Bootstrap 5 syntax reference.
 Some SQL working files.  
 None of these serve a functional purpose in the finished product.  
 ### `/asset_submit.php`  
-Direct form submissions to this script to add them to the database.  
+Send HTML form submissions to this script to add them to the database.  
+### `/asset_list.php`  
+Pulls a list of every asset from the database and returns it as JSON.  
+This script is intended to be requested via AJAX.  
 ### `/bootstrap-example.html`  
 A very simple HTML page that also serves as Bootstrap 5 reference.  
 ### `/db_init.php`  
