@@ -22,7 +22,7 @@
         }
 
         // Grabbing variables from form submission
-        if (!ctype_space($_POST["friendly-name"] . " ")) { // Check that the string is non-null and not purely whitespace
+        if (!ctype_space($_POST["friendly-name"] . " ")) { // Check that the friendly name is non-null and not purely whitespace
             $friendly_name = $_POST["friendly-name"];
         }
         else {
