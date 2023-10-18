@@ -30,9 +30,10 @@
       // This function runs when the button is clicked.
       function getAssets() {
 
-        // Create an object using the XMLHttpRequest class.
+        // Create an object using the XMLHttpRequest class and set it to JSON
         // Its methods will let us request data from another page
         const xmr = new XMLHttpRequest()
+        xmr.responseType = "json"
 
         // Create constants that point to our table and loading bar
         const theTable = document.getElementById("the-table")
@@ -43,8 +44,7 @@
 
         // This function runs when the server response is ready
         xmr.onload = function() {
-          // Parse the server's response as JSON
-          const assetList = JSON.parse(xmr.responseText)
+          const assetList = xmr.response
           
           // Draw header
           theTable.innerHTML = "<tr><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th></tr>"
