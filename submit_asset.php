@@ -37,6 +37,7 @@
         $model = $_POST["model"];
         $asset_type = $_POST["asset-type"];
         $location = $_POST["location"];
+        $category = $_POST["category"];
 
         try {
             $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
@@ -48,20 +49,23 @@
                 `Manufacturer`,
                 `Model`,
                 `AssetType`,
-                `Location`)
+                `Location`,
+                `Category`)
                 VALUES (
                 :friendly_name,
                 :manufacturer,
                 :model,
                 :asset_type,
-                :location);");
+                :location,
+                :category);");
                 
             $stmt->execute([
                 'friendly_name' => $friendly_name,
                 'manufacturer' => $manufacturer,
                 'model' => $model,
                 'asset_type' => $asset_type,
-                'location' => $location]);
+                'location' => $location,
+                'category' => $category]);
                 
             $last_id = $conn->lastInsertId();
             echo
