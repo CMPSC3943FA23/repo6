@@ -40,7 +40,7 @@
             // Create table categories
             $sql = "CREATE TABLE IF NOT EXISTS `categories` (
                 `ID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                `Title` varchar(255) NOT NULL,
+                `Title` varchar(255) NOT NULL
                 )";
                 $conn->exec($sql);
                 echo
