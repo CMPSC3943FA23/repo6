@@ -17,8 +17,12 @@ Forms for creating new database entries.
 ### `db_`  
 These files manipulate or access the database directly, and are intended for internal or development use.  
 The final product will only make limited use of these files.  
+### `edit_`  
+Forms for editing existing database entries.  
 ### `retr_`  
 Scripts that retrieve information from the database.  
+### `show_`  
+Pages that display data.  
 ### `submit_`  
 Scripts that add new information to the database.  
 ## File Index  
