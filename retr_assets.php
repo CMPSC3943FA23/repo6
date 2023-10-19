@@ -1,9 +1,4 @@
 <?php 
-
-// This script is deprecated in favor of a less ambiguous naming convention.
-// It will eventually be removed.
-
-
 header('Content-Type: application/json');
 try {
     require 'config/db_cfg.php';

@@ -11,6 +11,16 @@ You can include it like this:
 <script src="bootstrap/js/bootstrap.min.js"></script>
 ```
 Other versions of Bootstrap 5 will probably work fine, but using the one included in our repository will help things run a bit faster and maximize consistency between different pages.  
+## File Prefix Explanation  
+### `create_`  
+Forms for creating new database entries.  
+### `db_`  
+These files manipulate or access the database directly, and are intended for internal or development use.  
+The final product will only make limited use of these files.  
+### `retr_`  
+Scripts that retrieve information from the database.  
+### `submit_`  
+Scripts that add new information to the database.  
 ## File Index  
 ### `/bootstrap/`
 The Bootstrap library and all of its files, for use by Hobby Harmony.  
@@ -24,17 +34,22 @@ Go here if you need to see how Bootstrap-based pages are written.
 ### `/sql/`  
 Some SQL working files.  
 None of these serve a functional purpose in the finished product.  
-### `/asset_create.html`  
-This is the asset creation form. It submits to `asset_submit.php`, which then sends the data to the database.  
-### `/asset_submit.php`  
-Send HTML form submissions to this script to add them to the database.  
-### `/asset_list.php`  
-Pulls a list of every asset from the database and returns it as JSON.  
-This script is intended to be requested via AJAX.  
+### `/create_asset.html`  
+Used to be `/asset_create.html`, but has been changed to a less ambiguous naming convention.  
+This is the asset creation form. It submits to `submit_asset.php`, which then sends the data to the database.  
 ### `/bootstrap-example.html`  
 A very simple HTML page that also serves as Bootstrap 5 reference.  
 ### `/db_init.php`  
 A script to create the database and its tables.  
 ### `/db_view.html`  
 This page will render the current database contents.  
-It's read-only and is not intended to be used in the final product.
+It is read-only and is not intended to be used in the final product.  
+### `/retr_assets.php`  
+Used to be `/asset_list.php`, but has been changed to a less ambiguous naming convention.  
+Pulls a list of every asset from the database and returns it as JSON.  
+This script is intended to be requested via AJAX.  
+### `retr_categories.php`  
+Pulls a list of user-defined categories and returns it as JSON.  
+### `/submit_asset.php`  
+Used to be `/asset_submit.php`, but has been changed to a less ambiguous naming convention.
+Send HTML form submissions to this script to add them to the database.  
