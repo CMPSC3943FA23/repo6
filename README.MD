@@ -35,6 +35,6 @@ This script is intended to be requested via AJAX.
 A very simple HTML page that also serves as Bootstrap 5 reference.  
 ### `/db_init.php`  
 A script to create the database and its tables.  
-### `/db_view.php`  
+### `/db_view.html`  
 This page will render the current database contents.  
 It's read-only and is not intended to be used in the final product.

@@ -37,14 +37,27 @@
             $sql = "USE `$dbname`;";
             $conn->exec($sql);
 
-            // Create tables
+            // Create table categories
+            $sql = "CREATE TABLE IF NOT EXISTS `categories` (
+                `ID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                `Title` varchar(255) NOT NULL,
+                )";
+                $conn->exec($sql);
+                echo
+                "<div class='alert alert-success'>
+                Table <strong>categories</strong> created successfully.
+                </div>";
+
+            // Create table assets
             $sql = "CREATE TABLE IF NOT EXISTS `assets` (
             `ID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
             `FriendlyName` varchar(255) NOT NULL,
             `Manufacturer` varchar(255),
             `Model` varchar(255),
             `AssetType` varchar(255),
-            `Location` varchar(255)
+            `Location` varchar(255),
+            `Category` int,
+            FOREIGN KEY (`Category`) REFERENCES `categories`(`ID`)
             )";
             $conn->exec($sql);
             echo
