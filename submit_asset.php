@@ -70,7 +70,8 @@
             $last_id = $conn->lastInsertId();
             echo
             "<div class='alert alert-success'>
-            Asset <strong>" . $friendly_name . "</strong> with ID <strong>" . $last_id . "</strong> added successfully.
+            Asset <strong>" . $friendly_name . "</strong> with ID <strong>" . $last_id . "</strong> added successfully.<br>
+            You may now close this window.
             </div>";
         }
         catch(PDOException $e) {

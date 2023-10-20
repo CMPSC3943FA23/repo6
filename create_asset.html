@@ -51,7 +51,7 @@
                     <label for="category">Category</label>
                     <div class="d-flex">
                         <select id="category" name="category" class="form-select" style="display: inline;">
-                            <option id="cat-blank" value=""></option>
+                            <option id="cat-blank" value="">Populating list...</option>
                         </select>
                         <span id="refresh-button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></span> <!-- We don't want to use a button because we don't want to submit -->
                         <span id="edit-button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></span>
@@ -66,13 +66,17 @@
         </div>
     </div>
     <script>
-        let hasLoaded = false
+        //let hasLoaded = false // no longer necessary
         const catBox = document.getElementById("category")
         const refreshButton = document.getElementById("refresh-button")
         const editButton = document.getElementById("edit-button")
 
         // Populate when the list box is clicked, but only if it hasn't been populated yet
-        catBox.addEventListener("click", function() {if (hasLoaded == false) {populateList()}})
+        // This is disabled because, while it technically works most of the time, it's glitchy and doesn't work at all in Safari
+        //catBox.addEventListener("click", function() {if (hasLoaded == false) {populateList()}})
+
+        // Populate when the page is loaded
+        addEventListener("load", populateList)
         // Populate when the refresh button is clicked
         refreshButton.addEventListener("click", populateList)
         // Open categories page when the edit button is clicked
@@ -84,9 +88,8 @@
 
             xhr.onload = function() {
                 const catList = xhr.response
-                catBox.innerHTML = "<option id=\"cat-blank\" value=\"\"></option>" // Reset innerHTML of cat-box to its original value
+                catBox.innerHTML = "<option id=\"cat-blank\" value=\"\">Populating list...</option>" // Reset innerHTML of cat-box to its original value
                 const catBlank = document.getElementById("cat-blank")
-                catBlank.innerHTML = "Populating list..."
 
                 // Draw each option
                 for (let cat of catList) {
@@ -101,7 +104,8 @@
 
             xhr.open("GET", "retr_categories.php")
             xhr.send()
-            hasLoaded = true
+            
+            //hasLoaded = true // no longer necessary
         }
     </script>
 </body>
