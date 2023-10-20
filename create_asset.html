@@ -5,82 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <title>Asset Creation Form</title>
 </head>
 
 <body>
     <div class="container">
         <div class="col">
+            <!-- Modified by Sidney -->
+            <!-- For some reason, things weren't lining up right until I added a col inside each row. -->
             <form action="submit_asset.php" method="post">
-                <div class="p-2">
-                    <label for="friendly-name">Name Of Asset</label>
-                    <input type="text" class="form-control" name="friendly-name" id="friendly-name" placeholder="Name Your Asset" required>
+                <div class="pt-2 pb-2 row">
+                    <div class="col">
+                        <label for="friendly-name">Name Of Asset</label>
+                        <input type="text" class="form-control" name="friendly-name" id="friendly-name" placeholder="Name Your Asset" required>
+                    </div>
                 </div>
-                <div class="p-2">
-                    <label for="manufacturer">Manufacturer</label>
-                    <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="Name Of Manufacturer">
+                <div class="pt-2 pb-2 row">
+                    <div class="col">
+                        <label for="manufacturer">Manufacturer</label>
+                        <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="Name Of Manufacturer">
+                    </div>
                 </div>
-                <div class="p-2">
-                    <label for="model">Model</label>
-                    <input type="text" class="form-control" name="model" id="model" placeholder="Name Of Model">
+                <div class="pt-2 pb-2 row">
+                    <div class="col">
+                        <label for="model">Model</label>
+                        <input type="text" class="form-control" name="model" id="model" placeholder="Name Of Model">
+                    </div>
                 </div>
-                <div class="p-2">
-                    <label for="asset-type">Type Of Asset</label>
-                    <input type="text" class="form-control" name="asset-type" id="asset-type" placeholder="Name Of Asset Type">
+                <div class="pt-2 pb-2 row">
+                    <div class="col">
+                        <label for="asset-type">Type Of Asset</label>
+                        <input type="text" class="form-control" name="asset-type" id="asset-type" placeholder="Name Of Asset Type">
+                    </div>
                 </div>
-                <div class="p-2">
-                    <label for="location">Location Of Asset</label>
-                    <input type="text" class="form-control" name="location" id="location" placeholder="Location Of Asset">
+                <div class="pt-2 pb-2 row">
+                    <div class="col">
+                        <label for="location">Location Of Asset</label>
+                        <input type="text" class="form-control" name="location" id="location" placeholder="Location Of Asset">
+                    </div>
                 </div>
                 <!-- Added by Sidney for category support -->
-                <div class="p-2">
+                <div class="pt-2 pb-2 row">
                     <label for="category">Category</label>
-                    <select id="category" name="category" class="form-select">
-                        <option value=""></option>
-                        <option id="loading-msg" value="">Populating list...</option>
-                    </select>
+                    <div class="d-flex">
+                        <select id="category" name="category" class="form-select" style="display: inline;">
+                            <option id="cat-blank" value=""></option>
+                        </select>
+                        <span id="refresh-button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></span> <!-- We don't want to use a button because we don't want to submit -->
+                        <span id="edit-button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></span>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <div class="p-3">
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                <div class="pt-2 pb-2 row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-success mb-2">Submit</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-
     <script>
         let hasLoaded = false
         const catBox = document.getElementById("category")
-        catBox.addEventListener("click", function() {
-            if (hasLoaded == false) {
-                const xhr = new XMLHttpRequest()
-                xhr.responseType = "json"
+        const refreshButton = document.getElementById("refresh-button")
+        const editButton = document.getElementById("edit-button")
 
-                xhr.onload = function() {
-                    const catList = xhr.response
-                    const loadingMsg = document.getElementById("loading-msg")
-                    catBox.removeChild(loadingMsg)
+        // Populate when the list box is clicked, but only if it hasn't been populated yet
+        catBox.addEventListener("click", function() {if (hasLoaded == false) {populateList()}})
+        // Populate when the refresh button is clicked
+        refreshButton.addEventListener("click", populateList)
+        // Open categories page when the edit button is clicked
+        editButton.addEventListener("click", function() {open("show_categories.html")})
 
-                    // Draw each option
-                    for (let cat of catList) {
-                        const newOption = document.createElement("option")
-                        newOption.value = cat["ID"]
-                        newOption.innerHTML = cat["Title"]
-                        catBox.appendChild(newOption)
-                    }
+        function populateList() {
+            const xhr = new XMLHttpRequest()
+            xhr.responseType = "json"
+
+            xhr.onload = function() {
+                const catList = xhr.response
+                const catBlank = document.getElementById("cat-blank")
+                catBlank.innerHTML = "Populating list..."
+
+                // Draw each option
+                for (let cat of catList) {
+                    const newOption = document.createElement("option")
+                    newOption.value = cat["ID"]
+                    newOption.innerHTML = cat["Title"]
+                    catBox.appendChild(newOption)
                 }
 
-                xhr.open("GET", "retr_categories.php")
-                xhr.send()
-                hasLoaded = true
+                catBlank.innerHTML = ""
             }
-            else {
-                console.log("Box contents already loaded")
-            }
-        })
+
+            xhr.open("GET", "retr_categories.php")
+            xhr.send()
+            hasLoaded = true
+        }
     </script>
 </body>
 

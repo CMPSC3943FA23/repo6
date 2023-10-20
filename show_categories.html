@@ -9,9 +9,9 @@
   </head>
   <body>
     <div class="container mt-4">
-      <a href="create_category.html"><button class="btn btn-primary">Add New</button></a>
+      <button id="add-button" class="btn btn-primary">Add New</button>
       <!-- Loading bar is enabled by default since the script uses a load event -->
-      <div id="loading-bar" class="progress"><div class='progress-bar progress-bar-striped progress-bar-animated' style='width: 100%'></div></div>
+      <div id="loading-bar" class="progress mt-2"><div class='progress-bar progress-bar-striped progress-bar-animated' style='width: 100%'></div></div>
       <table class="table table-striped table-responsive-md">
         <tbody id="the-table">
           <!-- Empty table will be filled by the script below -->
@@ -20,6 +20,9 @@
     </div>
 
     <script>
+      const addButton = document.getElementById("add-button")
+      addButton.addEventListener("click", function() {open("create_category.html", "_blank", "width=400, height=200")})
+
       // This function runs when the page is loaded
       addEventListener("load", function() {
 
@@ -40,16 +43,13 @@
           theTable.innerHTML = "<tr><th>ID</th><th>Category Title</th></tr>"
 
           // Draw rows
-          for (let i in assetList) {
-            // Assign a constant to the current asset
-            const newAsset = assetList[i]
-
+          for (let cat of catList) {
             const newRow = document.createElement("tr")
 
             // Draw cells
-            for (let j in newAsset) {
+            for (let catData of cat) {
               const newCell = document.createElement("td")
-              const newData = document.createTextNode(newAsset[j])
+              const newData = document.createTextNode(catData)
               newCell.appendChild(newData)
               newRow.appendChild(newCell)
             }
