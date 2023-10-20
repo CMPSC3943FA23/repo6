@@ -49,7 +49,8 @@
             $last_id = $conn->lastInsertId();
             echo
             "<div class='alert alert-success'>
-            Category <strong>" . $category_title . "</strong> with ID <strong>" . $last_id . "</strong> added successfully.
+            Category <strong>" . $category_title . "</strong> with ID <strong>" . $last_id . "</strong> added successfully.<br>
+            You may now close this window.
             </div>";
         }
         catch(PDOException $e) {
