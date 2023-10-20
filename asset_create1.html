@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <title>Asset Creation Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col">
+            <form action="asset_submit.php" method="post">
+                <div class="p-2">
+                    <label for="friendly-name">Name Of Asset</label>
+                    <input type="text" class="form-control" name="friendly-name" id="friendly-name" placeholder="Name Your Asset" required>
+                </div>
+                <div class="p-2">
+                    <label for="manufacturer">Manufacturer</label>
+                    <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="Name Of Manufacturer">
+                </div>
+                <div class="p-2">
+                    <label for="model">Model</label>
+                    <input type="text" class="form-control" name="model" id="model" placeholder="Name Of Model">
+                </div>
+                <div class="p-2">
+                    <label for="asset-type">Type Of Asset</label>
+                    <input type="text" class="form-control" name="asset-type" id="asset-type" placeholder="Name Of Asset Type">
+                </div>
+                <div class="p-2">
+                    <label for="location">Location Of Asset</label>
+                    <input type="text" class="form-control" name="location" id="location" placeholder="Location Of Asset">
+                </div>
+                <div class="p-2">
+                    <label for="photo">Custom Photo</label>
+                    <input type="file" class="form-control" name="photo" id="photo" placeholder="Custom Photo" accept="image/png, image/gif, image/jpeg">
+                </div>
+                <div class="col-4">
+                    <div class="p-3">
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
