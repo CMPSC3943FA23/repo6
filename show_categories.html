@@ -47,9 +47,9 @@
             const newRow = document.createElement("tr")
 
             // Draw cells
-            for (let catData of cat) {
+            for (let i in cat) {
               const newCell = document.createElement("td")
-              const newData = document.createTextNode(catData)
+              const newData = document.createTextNode(cat[i])
               newCell.appendChild(newData)
               newRow.appendChild(newCell)
             }
