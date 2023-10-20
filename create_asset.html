@@ -84,6 +84,7 @@
 
             xhr.onload = function() {
                 const catList = xhr.response
+                catBox.innerHTML = "<option id=\"cat-blank\" value=\"\"></option>" // Reset innerHTML of cat-box to its original value
                 const catBlank = document.getElementById("cat-blank")
                 catBlank.innerHTML = "Populating list..."
 
