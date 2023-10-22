@@ -15,7 +15,7 @@
         <div class="col">
             <!-- Modified by Sidney -->
             <!-- For some reason, things weren't lining up right until I added a col inside each row. -->
-            <form action="submit_asset.php" method="post">
+            <form action="submit_asset.php" method="post" enctype="multipart/form-data">
                 <div class="pt-2 pb-2 row">
                     <div class="col">
                         <label for="friendly-name">Name Of Asset</label>
@@ -48,6 +48,8 @@
                 </div>
                 <div class="pt-2 pb-2 row">
                     <div class="col">
+                        <!-- Simple check for filesize -->
+                        <input type="hidden" name="MAX_FILE_SIZE" value="16777215">
                         <label for="photo">Custom Photo</label>
                         <input type="file" class="form-control" name="photo" id="photo" placeholder="Custom Photo" accept="image/png, image/gif, image/jpeg">
                     </div>

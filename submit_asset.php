@@ -38,7 +38,38 @@
         $asset_type = $_POST["asset-type"];
         $location = $_POST["location"];
         $category = $_POST["category"];
-        $photo = $_POST["photo"];
+
+        if ($_FILES["photo"]["size"] > 0) { // We don't want to try to handle a photo upload if there is none
+            $photo = basename($_FILES["photo"]["name"]);
+            $photo_tmp = $_FILES["photo"]["tmp_name"];
+            $upload_dir = "uploads/";
+            $upload_file = $upload_dir . $photo;
+    
+            // For testing purposes
+            echo $photo_tmp;
+
+            if (strlen($photo) > 255) {
+                echo
+                "<div class='alert alert-danger'>
+                <strong>Error:</strong> Photo filename is too long.
+                </div>";
+                die();
+            }
+
+            if (move_uploaded_file($photo_tmp, $upload_file)) { // Do not continue if upload fails
+                echo
+                "<div class='alert alert-success'>
+                Photo <strong>" . $photo . "</strong> uploaded successfully.
+                </div>";
+            }
+            else {
+                echo
+                "<div class='alert alert-danger'>
+                <strong>Error:</strong> Couldn't upload photo.
+                </div>";
+                die();
+            }
+        }
 
         try {
             $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
