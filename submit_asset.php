@@ -46,7 +46,7 @@
             $upload_file = $upload_dir . $photo;
     
             // For testing purposes
-            echo "<script>console.log('Temporary file path: " . $photo_tmp . "'</script>";
+            echo "<script>console.log('Temporary file path: " . $photo_tmp . "')</script>";
 
             if (strlen($photo) > 255) {
                 echo
