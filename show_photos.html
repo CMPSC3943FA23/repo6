@@ -59,12 +59,13 @@
 
             const nameCell = document.createElement("td")
             nameCell.innerHTML = cat["FriendlyName"]
-            newRow.appendChild(idCell)
+            newRow.appendChild(nameCell)
 
             const photoCell = document.createElement("td")
             const photoData = document.createElement("img")
             photoData.src = "uploads/" + cat["Photo"]
             photoData.alt = cat["Photo"]
+            photoData.style.width = "200px"
             photoCell.appendChild(photoData)
             newRow.appendChild(photoCell)
             
