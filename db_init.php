@@ -57,6 +57,7 @@
             `AssetType` varchar(255),
             `Location` varchar(255),
             `Category` int,
+            `Photo` mediumblob,
             FOREIGN KEY (`Category`) REFERENCES `categories`(`ID`)
             )";
             $conn->exec($sql);
