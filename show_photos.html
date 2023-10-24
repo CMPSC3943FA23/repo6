@@ -19,6 +19,23 @@
           <!-- Empty table will be filled by the script below -->
         </tbody>
       </table>
+      <button class="btn btn-warning" id="savePDF">Save PDF</button>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+      <script>
+          document.querySelector("#savePDF").addEventListener("click", function() {
+              let contentToSave = document.querySelector('#the-table');
+  
+              let opt = {
+                  margin:       10,
+                  filename:     'HobbyHarmony.pdf',
+                  image:        { type: 'jpeg', quality: 0.98 },
+                  html2canvas:  { scale: 2 },
+                  jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+              };
+  
+              html2pdf().from(contentToSave).set(opt).save();
+          });
+      </script>
     </div>
 
     <script>
