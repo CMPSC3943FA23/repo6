@@ -1,4 +1,6 @@
 function savePDF(filename, query) {
+    console.log("Filename: " + filename)
+    console.log("Query: " + query)
     let contentToSave = document.querySelector(query);
 
     let opt = {
