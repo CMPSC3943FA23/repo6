@@ -21,7 +21,7 @@
       </table>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
       <script src="script_save_pdf.js"></script>
-      <button class="btn btn-warning" onclick="savePDF('photos.pdf', '#the-table')">Save PDF</button>
+      <button class="btn btn-warning" onclick="savePDF('photos.pdf', document.querySelector('#the-table'))">Save PDF</button>
     </div>
 
     <script>

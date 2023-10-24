@@ -1,7 +1,7 @@
-function savePDF(filename, query) {
+function savePDF(filename, contentToSave) {
     console.log("Filename: " + filename)
-    console.log("Query: " + query)
-    let contentToSave = document.querySelector(query);
+    //console.log("Query: " + query)
+    //let contentToSave = document.querySelector(query);
 
     let opt = {
         margin:       10,
