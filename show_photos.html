@@ -20,23 +20,7 @@
         </tbody>
       </table>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-      <!-- <script src="script_save_pdf.js"></script> -->
-      <script>
-        function savePDF(filename) {
-    console.log("Filename: " + filename)
-    let contentToSave = document.querySelector(".pdf-target");
-
-    let opt = {
-        margin:       10,
-        filename:     filename,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
-    };
-
-    html2pdf().from(contentToSave).set(opt).save();
-};
-      </script>
+      <script src="script_save_pdf.js"></script>
       <button class="btn btn-warning" onclick="savePDF('photos.pdf')">Save PDF</button>
     </div>
 
