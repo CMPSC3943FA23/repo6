@@ -48,23 +48,24 @@
             $photo = basename($_FILES["photo"]["name"]);
             $photo_tmp = $_FILES["photo"]["tmp_name"];
             $upload_dir = "uploads/";
-            $upload_file = $upload_dir . $photo;
+            $hashed_name = uniqid("img") . "." . pathinfo($photo, PATHINFO_EXTENSION);
+            $upload_file = $upload_dir . $hashed_name;
     
             // For testing purposes
             echo "<script>console.log('Temporary file path: " . $photo_tmp . "')</script>";
 
-            if (strlen($photo) > 255) {
+            /*if (strlen($photo) > 255) {
                 echo
                 "<div class='alert alert-danger'>
                 <strong>Error:</strong> Photo filename is too long.
                 </div>";
                 die();
-            }
+            }*/
 
             if (move_uploaded_file($photo_tmp, $upload_file)) { // Do not continue if upload fails
                 echo
                 "<div class='alert alert-success'>
-                Photo <strong>" . $photo . "</strong> uploaded successfully.
+                Photo <strong>" . $photo . "</strong> uploaded successfully as <strong>" . $hashed_name . "</strong>.
                 </div>";
             }
             else {
@@ -105,7 +106,7 @@
                 'asset_type' => $asset_type,
                 'location' => $location,
                 'category' => $category,
-                'photo' => $photo]);
+                'photo' => $hashed_name]);
                 
             $last_id = $conn->lastInsertId();
             echo
