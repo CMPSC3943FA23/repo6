@@ -6,7 +6,7 @@
     <title>Home - Hobby Harmony</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <style>
+    <!--<style>
     .landing-text{
         margin-top: -100px;
         position: absolute;
@@ -30,13 +30,13 @@
         width:100%; 
         font-weight: 500;
     }
-    </style>
+    </style>-->
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position: fixed; width: 100%;">
         <div class="container">
-          <a class="navbar-brand" href="#">HobbyHarmony</a>
+          <a class="navbar-brand" href="#">Hobby Harmony</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -49,18 +49,25 @@
                 <a class="nav-link" href="create_asset.html">Create Asset</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">My Assets</a>
+                <a class="nav-link" href="show_assets.html">My Assets</a>
               </li>    
             </ul>
           </div>
         </div>
     </nav>
-        <div class="landing-text">
-            <h1>Hobby Harmony</h1>
+      <div class="container vh-100">
+        <div class="d-flex flex-column align-items-center justify-content-center h-100">
+          <div class="mb-auto"></div>
+          <div class="p-2 text-center">
+            <h1 class="display-1"><strong>Hobby Harmony</strong></h1>
             <h2>Create and save your assets.</h2>
             <a href="create_asset.html"class="btn btn-dark btn-lg">Get Started</a>
+          </div>
+          <div class="mt-auto p-2 text-center"></div>
             <p>Hobby Harmony is a generalized asset tracker for personal use within the context
                 of any hobby that involves a large collection.</p>
+          </div>
         </div>
+      </div>
 </body>
 </html>

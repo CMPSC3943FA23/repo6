@@ -8,11 +8,19 @@
     <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <title>Create New Asset - Hobby Harmony</title>
+    <style>
+        #page-header {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="col">
+            <div id="page-header" class="pt-4 pb-4 row">
+                <h1>Create new asset</h1>
+            </div>
             <!-- Modified by Sidney -->
             <!-- For some reason, things weren't lining up right until I added a col inside each row. -->
             <form action="submit_asset.php" method="post" enctype="multipart/form-data">
@@ -73,6 +81,7 @@
             </form>
         </div>
     </div>
+
     <script>
         //let hasLoaded = false // no longer necessary
         const catBox = document.getElementById("category")
@@ -91,6 +100,13 @@
         editButton.addEventListener("click", function() {open("show_categories.html")})
 
         function populateList() {
+            // Remove the header if this is a pop-up window
+            const urlParams = new URLSearchParams(window.location.search)
+            const title = urlParams.get("title")
+            if (title != "false") {
+                document.getElementById("page-header").style.display = "block"
+            }
+
             const xhr = new XMLHttpRequest()
             xhr.responseType = "json"
 

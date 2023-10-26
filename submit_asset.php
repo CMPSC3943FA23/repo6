@@ -37,7 +37,12 @@
         $model = $_POST["model"];
         $asset_type = $_POST["asset-type"];
         $location = $_POST["location"];
-        $category = $_POST["category"];
+        if ($_POST["category"] == "") {
+            $category = null;
+        }
+        else {
+            $category = $_POST["category"];
+        }
 
         if ($_FILES["photo"]["size"] > 0) { // We don't want to try to handle a photo upload if there is none
             $photo = basename($_FILES["photo"]["name"]);

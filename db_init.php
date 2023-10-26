@@ -8,7 +8,10 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container mt-4">
+    <div class="container">
+        <div class="pt-4 pb-4 row">
+            <h1>Database Initialization</h1>
+        </div>
         <?php
         try {
             require 'config/db_cfg.php';
@@ -67,7 +70,7 @@
             </div>";
 
             echo
-            "<button type='button' class='btn btn-success'>Continue</button>";
+            "<a class='btn btn-success' href='create_asset.html'>Continue</a>";
         }
         catch(PDOException $e) {
             echo
