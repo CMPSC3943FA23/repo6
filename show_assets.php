@@ -37,7 +37,7 @@
       // Draw table when the page is loaded
       addEventListener("load", drawTable)
       // Open create form when add button is clicked
-      addButton.addEventListener("click", function() {open("create_asset.html?title=false", "_blank", "width=400, height=640")})
+      addButton.addEventListener("click", function() {open("create_asset.php?title=false", "_blank", "width=400, height=640")})
       // Draw table when refresh button is clicked
       refreshButton.addEventListener("click", drawTable)
       // Create PDF when PDF button is clicked

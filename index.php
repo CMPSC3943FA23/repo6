@@ -46,10 +46,10 @@
                 <a class="nav-link" href="prototype/HobbyHarmony.html">Prototype</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="create_asset.html">Create Asset</a>
+                <a class="nav-link" href="create_asset.php">Create Asset</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="show_assets.html">My Assets</a>
+                <a class="nav-link" href="show_assets.php">My Assets</a>
               </li>    
             </ul>
           </div>
@@ -61,7 +61,7 @@
           <div class="p-2 text-center">
             <h1 class="display-1"><strong>Hobby Harmony</strong></h1>
             <h2>Create and save your assets.</h2>
-            <a href="create_asset.html"class="btn btn-dark btn-lg">Get Started</a>
+            <a href="create_asset.php"class="btn btn-dark btn-lg">Get Started</a>
           </div>
           <div class="mt-auto p-2 text-center"></div>
             <p>Hobby Harmony is a generalized asset tracker for personal use within the context

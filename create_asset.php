@@ -92,28 +92,28 @@
         // This is disabled because, while it technically works most of the time, it's glitchy and doesn't work at all in Safari
         //catBox.addEventListener("click", function() {if (hasLoaded == false) {populateList()}})
 
-        // Populate when the page is loaded
-        addEventListener("load", populateList)
-        // Populate when the refresh button is clicked
-        refreshButton.addEventListener("click", populateList)
-        // Open categories page when the edit button is clicked
-        editButton.addEventListener("click", function() {open("show_categories.html")})
-
-        function populateList() {
+        addEventListener("load", function() {
             // Remove the header if this is a pop-up window
             const urlParams = new URLSearchParams(window.location.search)
             const title = urlParams.get("title")
             if (title != "false") {
                 document.getElementById("page-header").style.display = "block"
             }
+            populateList() // Populate when the page is loaded
+        })
+        // Populate when the refresh button is clicked
+        refreshButton.addEventListener("click", populateList)
+        // Open categories page when the edit button is clicked
+        editButton.addEventListener("click", function() {open("show_categories.php")})
+
+        function populateList() {
+            catBox.innerHTML = "<option id=\"cat-blank\" value=\"\">Populating list...</option>" // Reset innerHTML of cat-box to its original value
 
             const xhr = new XMLHttpRequest()
             xhr.responseType = "json"
 
             xhr.onload = function() {
                 const catList = xhr.response
-                catBox.innerHTML = "<option id=\"cat-blank\" value=\"\">Populating list...</option>" // Reset innerHTML of cat-box to its original value
-                const catBlank = document.getElementById("cat-blank")
 
                 // Draw each option
                 for (let cat of catList) {
@@ -123,6 +123,7 @@
                     catBox.appendChild(newOption)
                 }
 
+                const catBlank = document.getElementById("cat-blank")
                 catBlank.innerHTML = ""
             }
 

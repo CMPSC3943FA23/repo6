@@ -10,6 +10,9 @@
   </head>
   <body>
     <div class="container mt-4">
+      <div id="page-header" class="pt-4 pb-4 row">
+          <h1>Viewing asset categories</h1>
+      </div>
       <button id="add-button" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
       <button id="refresh-button" class="btn btn-secondary"><i class="bi bi-arrow-clockwise"></i></button>
       <!-- Loading bar is enabled by default since the script uses a load event -->
@@ -30,7 +33,7 @@
       // Draw table when refresh button is clicked
       refreshButton.addEventListener("click", drawTable)
       // Open create form when add button is clicked
-      addButton.addEventListener("click", function() {open("create_category.html", "_blank", "width=400, height=200")})
+      addButton.addEventListener("click", function() {open("create_category.php", "_blank", "width=400, height=200")})
       
       function drawTable() {
 
