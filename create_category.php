@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <title>Create New Category - Hobby Harmony</title>
+    <?php // dummy block ?>
 </head>
 
 <body>

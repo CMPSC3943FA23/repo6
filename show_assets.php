@@ -9,6 +9,7 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/html2pdf.bundle.min.js"></script>
     <script src="js/script_save_pdf.js"></script>
+    <?php // dummy block ?>
   </head>
   <body>
     <div class="container">

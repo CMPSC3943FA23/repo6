@@ -13,6 +13,7 @@
             display: none;
         }
     </style>
+    <?php // dummy block ?>
 </head>
 
 <body>

@@ -7,6 +7,7 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <?php // dummy block ?>
   </head>
   <body>
     <div class="container mt-4">

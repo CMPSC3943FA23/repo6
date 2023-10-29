@@ -32,6 +32,7 @@
     }
     </style>-->
     
+    <?php // dummy block ?>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position: fixed; width: 100%;">
