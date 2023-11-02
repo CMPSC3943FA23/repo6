@@ -9,9 +9,9 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/html2pdf.bundle.min.js"></script>
     <script src="js/script_save_pdf.js"></script>
-    <?php // dummy block ?>
   </head>
   <body>
+    <?php include("include/incl_navbar.php"); ?>
     <div class="container">
       <div id="page-header" class="pt-4 pb-4 row">
           <h1>Viewing all assets</h1>

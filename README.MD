@@ -32,6 +32,8 @@ The Bootstrap library and all of its files, for use by Hobby Harmony.
 Configuration files for Hobby Harmony and its various features.  
 #### `/config/db_cfg.default.php`  
 Database connection settings.  
+### `/include/`  
+PHP include files for common elements across multiple pages.  
 ### `/prototype/`  
 A pseudo-functional prototype, mainly for Bootstrap 5 syntax reference.  
 Go here if you need to see how Bootstrap-based pages are written.  

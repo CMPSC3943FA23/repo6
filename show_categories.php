@@ -7,10 +7,10 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <?php // dummy block ?>
   </head>
   <body>
-    <div class="container mt-4">
+    <?php include("include/incl_navbar.php"); ?>
+    <div class="container">
       <div id="page-header" class="pt-4 pb-4 row">
           <h1>Viewing asset categories</h1>
       </div>
