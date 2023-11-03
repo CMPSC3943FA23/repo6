@@ -7,6 +7,7 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="extensions/natural-sorting/bootstrap-table-natural-sorting.js"></script>
     <script src="js/html2pdf.bundle.min.js"></script>
     <script src="js/script_save_pdf.js"></script>
   </head>
@@ -70,7 +71,7 @@
           const catList = xhr.response
           
           // Draw header
-          theTable.innerHTML = "<tr><th class='action-cell'></th><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th><th>Category</th><th>Photo</th></tr>"
+          theTable.innerHTML = "<th data-sortable="true" data-sorter="alphanum">Price</th><tr><th class='action-cell'></th><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th><th>Category</th><th>Photo</th></tr>"
 
           // Draw rows
           for (let cat of catList) {
