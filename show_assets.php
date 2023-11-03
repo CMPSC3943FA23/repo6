@@ -122,8 +122,5 @@
         xhr.send()
       }
     </script>
-  <script
-    $('#sortTable').DataTable();
-  </script>
   </body>
 </html>
