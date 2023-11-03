@@ -37,6 +37,8 @@
 
       const addAsset = document.getElementById("add-asset-body")
 
+      let catList
+
       // Draw table when the page is loaded
       addEventListener("load", drawTable)
       // Open create form when add button is clicked
@@ -69,7 +71,7 @@
 
         // This function runs when the server response is ready
         xhr.onload = function() {
-          const catList = xhr.response
+          catList = xhr.response
           
           // Draw header
           theTable.innerHTML = "<tr><th class='action-cell'></th><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th><th>Category</th><th>Photo</th><th data-sortable='true' data-sorter='alphanum'>Price</th></tr>"
@@ -122,7 +124,7 @@
         xhr.send()
       }
     </script>
-  <script
+  <script>
     $('#sortTable').DataTable();
   </script>
   </body>
