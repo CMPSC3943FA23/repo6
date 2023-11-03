@@ -44,7 +44,7 @@
       // Open create form when add button is clicked
       addButton.addEventListener("click", function() {open("create_asset.php?title=false", "_blank", "width=400, height=640")})
       // Draw table when refresh button is clicked
-      refreshButton.addEventListener("click", drawTable)
+      refreshButton.addEventListener("click", refreshTable)
       // Create PDF when PDF button is clicked
       pdfButton.addEventListener("click", function() {
         const actCells = document.getElementsByClassName("action-cell")
@@ -59,7 +59,7 @@
         }, 3000)
       })
       
-      function drawTable() { 
+      function refreshTable() { 
         // Create an object using the XMLHttpRequest class and set it to JSON
         // Its methods will let us request data from another page
         const xhr = new XMLHttpRequest()
@@ -73,47 +73,7 @@
         xhr.onload = function() {
           catList = xhr.response
           
-          // Draw header
-          theTable.innerHTML = "<tr><th class='action-cell'></th><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th><th>Category</th><th>Photo</th><th data-sortable='true' data-sorter='alphanum'>Price</th></tr>"
-
-          // Draw rows
-          for (let cat of catList) {
-            const actions = '<a href="#"><i class="bi-pencil-square"></i></a><a href="#"><i class="bi-trash"></i></a>'
-            const newRow = document.createElement("tr")
-
-            // Draw actions cell
-            const actCell = document.createElement("td")
-            actCell.classList.add("action-cell")
-            actCell.innerHTML = actions
-            newRow.appendChild(actCell)
-
-            // Draw other cells
-            for (let i in cat) {
-              const newCell = document.createElement("td")
-              if (cat[i] == null) {
-                newRow.appendChild(newCell)
-              }
-              else if (i == "Photo") {
-                const newImgPath = "uploads/" + cat[i]
-                const newLink = document.createElement("a") // Click on the image to see it full-size
-                newLink.href = newImgPath
-                const newData = document.createElement("img")
-                newData.src = newImgPath
-                newData.alt = cat[i]
-                newData.style.width = "200px"
-                newLink.appendChild(newData)
-                newCell.appendChild(newLink)
-                newRow.appendChild(newCell)
-              }
-              else {
-                const newData = document.createTextNode(cat[i])
-                newCell.appendChild(newData)
-                newRow.appendChild(newCell)
-              }
-            }
-
-            theTable.appendChild(newRow)
-          }
+          drawTable()
 
           // Disable loading bar
           loadingBar.style.display = "none"
@@ -122,6 +82,50 @@
         // Open the connection and send the request
         xhr.open("GET", "retr_assets.php")
         xhr.send()
+      }
+
+      function drawTable() {
+        // Draw header
+        theTable.innerHTML = "<tr><th class='action-cell'></th><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th><th>Category</th><th>Photo</th><th data-sortable='true' data-sorter='alphanum'>Price</th></tr>"
+
+        // Draw rows
+        for (let cat of catList) {
+          const actions = '<a href="#"><i class="bi-pencil-square"></i></a><a href="#"><i class="bi-trash"></i></a>'
+          const newRow = document.createElement("tr")
+
+          // Draw actions cell
+          const actCell = document.createElement("td")
+          actCell.classList.add("action-cell")
+          actCell.innerHTML = actions
+          newRow.appendChild(actCell)
+
+          // Draw other cells
+          for (let i in cat) {
+            const newCell = document.createElement("td")
+            if (cat[i] == null) {
+              newRow.appendChild(newCell)
+            }
+            else if (i == "Photo") {
+              const newImgPath = "uploads/" + cat[i]
+              const newLink = document.createElement("a") // Click on the image to see it full-size
+              newLink.href = newImgPath
+              const newData = document.createElement("img")
+              newData.src = newImgPath
+              newData.alt = cat[i]
+              newData.style.width = "200px"
+              newLink.appendChild(newData)
+              newCell.appendChild(newLink)
+              newRow.appendChild(newCell)
+            }
+            else {
+              const newData = document.createTextNode(cat[i])
+              newCell.appendChild(newData)
+              newRow.appendChild(newCell)
+            }
+          }
+
+          theTable.appendChild(newRow)
+        }
       }
     </script>
   </body>
