@@ -9,7 +9,6 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/natural-sorting/bootstrap-table-natural-sorting.js"></script>
     <script src="js/html2pdf.bundle.min.js"></script>
     <script src="js/script_save_pdf.js"></script>
   </head>
