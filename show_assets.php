@@ -71,7 +71,7 @@
           const catList = xhr.response
           
           // Draw header
-          theTable.innerHTML = "<th data-sortable="true" data-sorter="alphanum">Price</th><tr><th class='action-cell'></th><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th><th>Category</th><th>Photo</th></tr>"
+          theTable.innerHTML = "<tr><th class='action-cell'></th><th>ID</th><th>Friendly Name</th><th>Manufacturer</th><th>Model</th><th>Asset Type</th><th>Location</th><th>Category</th><th>Photo</th><th data-sortable="true" data-sorter="alphanum">Price</th></tr>"
 
           // Draw rows
           for (let cat of catList) {
