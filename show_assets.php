@@ -37,10 +37,14 @@
 
       const addAsset = document.getElementById("add-asset-body")
 
+      // Create constants that point to our table and loading bar
+      const theTable = document.getElementById("the-table")
+      const loadingBar = document.getElementById("loading-bar")
+
       let catList
 
       // Draw table when the page is loaded
-      addEventListener("load", drawTable)
+      addEventListener("load", refreshTable)
       // Open create form when add button is clicked
       addButton.addEventListener("click", function() {open("create_asset.php?title=false", "_blank", "width=400, height=640")})
       // Draw table when refresh button is clicked
@@ -64,10 +68,6 @@
         // Its methods will let us request data from another page
         const xhr = new XMLHttpRequest()
         xhr.responseType = "json"
-
-        // Create constants that point to our table and loading bar
-        const theTable = document.getElementById("the-table")
-        const loadingBar = document.getElementById("loading-bar")
 
         // This function runs when the server response is ready
         xhr.onload = function() {
