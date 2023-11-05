@@ -22,7 +22,9 @@
       <button id="refresh-button" class="btn btn-secondary"><i class="bi bi-arrow-clockwise"></i></button>
       <button id="pdf-button" class="btn btn-danger"><i class="bi bi-file-earmark-pdf"></i></button>
       <!-- Loading bar is enabled by default since the script uses a load event -->
+      <!-- We aren't using the loading bar anymore
       <div id="loading-bar" class="progress mt-2"><div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%;"></div></div>
+      -->
       <table class="table table-striped table-responsive-md pdf-target">
         <tbody id="the-table">
           <!-- Empty table will be filled by the script below -->
@@ -39,7 +41,7 @@
 
       // Create constants that point to our table and loading bar
       const theTable = document.getElementById("the-table")
-      const loadingBar = document.getElementById("loading-bar")
+      //const loadingBar = document.getElementById("loading-bar")
 
       let catList
 
@@ -65,7 +67,9 @@
       
       function refreshTable() { 
         // Enable loading bar
-        loadingBar.style.display = "block"
+        //loadingBar.style.display = ""
+        // Enable loading spinner
+        refreshButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span>'
 
         // Create an object using the XMLHttpRequest class and set it to JSON
         // Its methods will let us request data from another page
@@ -80,7 +84,9 @@
           drawTable()
 
           // Disable loading bar
-          loadingBar.style.display = "none"
+          //loadingBar.style.display = "none"
+          // Disable loading spinner
+          refreshButton.innerHTML = '<i class="bi bi-arrow-clockwise"></i>'
         }
 
         // Open the connection and send the request
