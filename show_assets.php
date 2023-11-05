@@ -71,6 +71,9 @@
 
         // This function runs when the server response is ready
         xhr.onload = function() {
+          // Enable loading bar
+          loadingBar.style.display = "block"
+
           catList = xhr.response
           
           drawTable()
