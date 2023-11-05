@@ -64,6 +64,9 @@
       })
       
       function refreshTable() { 
+        // Enable loading bar
+        loadingBar.style.display = "block"
+
         // Create an object using the XMLHttpRequest class and set it to JSON
         // Its methods will let us request data from another page
         const xhr = new XMLHttpRequest()
@@ -71,8 +74,6 @@
 
         // This function runs when the server response is ready
         xhr.onload = function() {
-          // Enable loading bar
-          loadingBar.style.display = "block"
 
           catList = xhr.response
           
