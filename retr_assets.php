@@ -1,5 +1,4 @@
 <?php 
-header('Content-Type: application/json');
 try {
     require 'config/db_cfg.php';
 }
@@ -7,6 +6,8 @@ catch(Error $e) {
     echo "Error: Database configuration file cannot be loaded: " . $e->getMessage();
     die();
 }
+
+header('Content-Type: application/json');
 
 try {
     $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
@@ -17,7 +18,16 @@ try {
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-    echo json_encode($stmt->fetchAll()); // Encode the complete SQL response in JSON
+    $response = $stmt->fetchAll();
+
+	// Convert image filenames to usable <img> tags
+    // This should really be done client-side, but I couldn't find an easy way to do that
+	for ($i = 0; $i < sizeof($response); $i++) {
+		$photoFilename = $response[$i]["Photo"];
+		$response[$i]["Photo"] = "<a href='uploads/" . $photoFilename . "'><img src='uploads/" . $photoFilename . "' alt='" . $photoFilename . "'></a>";
+	}
+
+    echo json_encode($response); // Encode the complete SQL response in JSON
 }
 catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
