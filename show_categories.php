@@ -18,7 +18,10 @@
           <h1>Viewing asset categories</h1>
       </div>
       <button id="add-button" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
-      <table id="table" class="table table-striped table-responsive-md" data-toggle="table" data-url="retr_categories.php" data-pagination="true" data-search="true">
+      <table id="table" class="table table-striped table-responsive-md" 
+      data-toggle="table" data-url="retr_categories.php" data-pagination="true" data-search="true"
+      data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true"
+      data-detail-view="true" data-show-export="true" data-id-field="ID" data-page-list="[10, 25, 50, 100, all]">
         <thead>
           <tr>
             <th data-field="ID" data-sortable="true">ID</th>
