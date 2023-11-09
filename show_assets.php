@@ -25,7 +25,7 @@
           <h1>Viewing all assets</h1>
       </div>
       <button id="add-button" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
-      <table id="table" data-toggle="table" data-url="retr_assets.php" data-pagination="true" data-search="true">
+      <table id="table" class="table table-striped table-responsive-md" data-toggle="table" data-url="retr_assets.php" data-pagination="true" data-search="true">
         <thead>
           <tr>
             <th data-field="ID" data-sortable="true">ID</th>
