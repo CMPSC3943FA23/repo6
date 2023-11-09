@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Table includes -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
   </head>
@@ -17,11 +19,13 @@
       <div id="page-header" class="pt-4 pb-4 row">
           <h1>Viewing asset categories</h1>
       </div>
-      <button id="add-button" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+      <div id="toolbar">
+        <button id="add-button" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+      </div>
       <table id="table" class="table table-striped table-responsive-md" 
       data-toggle="table" data-url="retr_categories.php" data-pagination="true" data-search="true"
       data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true"
-      data-show-export="true" data-id-field="ID" data-page-list="[10, 25, 50, 100, all]">
+      data-id-field="ID" data-page-list="[10, 25, 50, 100, all]" data-toolbar="#toolbar">
         <thead>
           <tr>
             <th data-field="ID" data-sortable="true">ID</th>
