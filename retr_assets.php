@@ -24,7 +24,9 @@ try {
     // This should really be done client-side, but I couldn't find an easy way to do that
 	for ($i = 0; $i < sizeof($response); $i++) {
 		$photoFilename = $response[$i]["Photo"];
-		$response[$i]["Photo"] = "<a href='uploads/" . $photoFilename . "'><img src='uploads/" . $photoFilename . "' alt='" . $photoFilename . "'></a>";
+        if ($photoFilename != "") {
+		    $response[$i]["Photo"] = "<a href='uploads/" . $photoFilename . "'><img src='uploads/" . $photoFilename . "' alt='" . $photoFilename . "'></a>";
+        }
 	}
 
     echo json_encode($response); // Encode the complete SQL response in JSON
