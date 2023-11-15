@@ -34,8 +34,9 @@
       <div id="page-header" class="pt-4 pb-4 row">
           <h1>Viewing all assets</h1>
       </div>
+      <?php include("submit_asset.php"); ?>
       <div id="toolbar">
-        <button id="add-button" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+        <button id="add-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-form"><i class="bi bi-plus-lg"></i></button>
       </div>
       <table id="table" class="table table-striped table-responsive-md" 
       data-toggle="table" data-url="retr_assets.php" data-pagination="true" data-search="true"
@@ -57,12 +58,122 @@
       </table>
     </div>
 
+    <div class="modal fade" id="add-form">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4>Create new asset</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form method="post" enctype="multipart/form-data"> <!-- Not setting an action means the form will submit to itself -->
+            <div class="modal-body">
+              <div class="pt-2 pb-2 row">
+                  <div class="col">
+                      <label for="friendly-name">Name Of Asset</label>
+                      <input type="text" class="form-control" name="friendly-name" id="friendly-name" placeholder="Name Your Asset" required>
+                  </div>
+              </div>
+              <div class="pt-2 pb-2 row">
+                  <div class="col">
+                      <label for="manufacturer">Manufacturer</label>
+                      <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="Name Of Manufacturer">
+                  </div>
+              </div>
+              <div class="pt-2 pb-2 row">
+                  <div class="col">
+                      <label for="model">Model</label>
+                      <input type="text" class="form-control" name="model" id="model" placeholder="Name Of Model">
+                  </div>
+              </div>
+              <div class="pt-2 pb-2 row">
+                  <div class="col">
+                      <label for="asset-type">Type Of Asset</label>
+                      <input type="text" class="form-control" name="asset-type" id="asset-type" placeholder="Name Of Asset Type">
+                  </div>
+              </div>
+              <div class="pt-2 pb-2 row">
+                  <div class="col">
+                      <label for="location">Location Of Asset</label>
+                      <input type="text" class="form-control" name="location" id="location" placeholder="Location Of Asset">
+                  </div>
+              </div>
+              <div class="pt-2 pb-2 row">
+                  <div class="col">
+                      <!-- Simple check for filesize -->
+                      <input type="hidden" name="MAX_FILE_SIZE" value="16777215">
+                      <label for="photo">Custom Photo</label>
+                      <input type="file" class="form-control" name="photo" id="photo" placeholder="Custom Photo" accept="image/png, image/gif, image/jpeg">
+                  </div>
+              </div>
+              <!-- Added by Sidney for category support -->
+              <div class="pt-2 pb-2 row">
+                  <label for="category">Category</label>
+                  <div class="d-flex">
+                      <select id="category" name="category" class="form-select" style="display: inline;">
+                          <option id="cat-blank" value="">Populating list...</option>
+                      </select>
+                      <span id="cat-refresh-button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></span> <!-- We don't want to use a button because we don't want to submit -->
+                      <span id="cat-edit-button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></span>
+                  </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
     <script>
+        const catBox = document.getElementById("category")
+        const refreshButton = document.getElementById("cat-refresh-button")
+        const editButton = document.getElementById("cat-edit-button")
+
+        // Populate when the page is loaded
+        window.addEventListener("load", populateList)
+        // Populate when the refresh button is clicked
+        refreshButton.addEventListener("click", populateList)
+        // Open categories page when the edit button is clicked
+        editButton.addEventListener("click", function() {open("show_categories.php")})
+
+        function populateList() {
+            catBox.innerHTML = "<option id='cat-blank' value=''>Populating list...</option>" // Reset innerHTML of cat-box to its original value
+
+            const xhr = new XMLHttpRequest()
+            xhr.responseType = "json"
+
+            xhr.onload = function() {
+                const catList = xhr.response
+
+                // Draw each option
+                for (let cat of catList) {
+                    const newOption = document.createElement("option")
+                    newOption.value = cat["ID"]
+                    newOption.innerHTML = cat["Title"]
+                    catBox.appendChild(newOption)
+                }
+
+                const catBlank = document.getElementById("cat-blank")
+                catBlank.innerHTML = ""
+            }
+
+            xhr.open("GET", "retr_categories.php")
+            xhr.send()
+        }
+    </script>
+
+    <script>
+      /*
       // Temporary script to continue implementing the old create form
       const addButton = document.getElementById("add-button")
 
       // Open create form when add button is clicked
       addButton.addEventListener("click", function() {open("create_asset.php?title=false", "_blank", "width=400, height=640")})
+      */
     </script>
   </body>
 </html>
