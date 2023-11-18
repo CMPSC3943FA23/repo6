@@ -66,6 +66,7 @@
             <h4>Create new asset</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
+
           <form method="post" enctype="multipart/form-data"> <!-- Not setting an action means the form will submit to itself -->
             <div class="modal-body">
               <div class="pt-2 pb-2 row">
@@ -129,41 +130,43 @@
 
 
     <script>
-        const catBox = document.getElementById("category")
-        const refreshButton = document.getElementById("cat-refresh-button")
-        const editButton = document.getElementById("cat-edit-button")
+      // Script for category selection on add form
+      
+      const catBox = document.getElementById("category")
+      const refreshButton = document.getElementById("cat-refresh-button")
+      const editButton = document.getElementById("cat-edit-button")
 
-        // Populate when the page is loaded
-        window.addEventListener("load", populateList)
-        // Populate when the refresh button is clicked
-        refreshButton.addEventListener("click", populateList)
-        // Open categories page when the edit button is clicked
-        editButton.addEventListener("click", function() {open("show_categories.php")})
+      // Populate when the page is loaded
+      window.addEventListener("load", populateList)
+      // Populate when the refresh button is clicked
+      refreshButton.addEventListener("click", populateList)
+      // Open categories page when the edit button is clicked
+      editButton.addEventListener("click", function() {open("show_categories.php")})
 
-        function populateList() {
-            catBox.innerHTML = "<option id='cat-blank' value=''>Populating list...</option>" // Reset innerHTML of cat-box to its original value
+      function populateList() {
+          catBox.innerHTML = "<option id='cat-blank' value=''>Populating list...</option>" // Reset innerHTML of cat-box to its original value
 
-            const xhr = new XMLHttpRequest()
-            xhr.responseType = "json"
+          const xhr = new XMLHttpRequest()
+          xhr.responseType = "json"
 
-            xhr.onload = function() {
-                const catList = xhr.response
+          xhr.onload = function() {
+              const catList = xhr.response
 
-                // Draw each option
-                for (let cat of catList) {
-                    const newOption = document.createElement("option")
-                    newOption.value = cat["ID"]
-                    newOption.innerHTML = cat["Title"]
-                    catBox.appendChild(newOption)
-                }
+              // Draw each option
+              for (let cat of catList) {
+                  const newOption = document.createElement("option")
+                  newOption.value = cat["ID"]
+                  newOption.innerHTML = cat["Title"]
+                  catBox.appendChild(newOption)
+              }
 
-                const catBlank = document.getElementById("cat-blank")
-                catBlank.innerHTML = ""
-            }
+              const catBlank = document.getElementById("cat-blank")
+              catBlank.innerHTML = ""
+          }
 
-            xhr.open("GET", "retr_categories.php")
-            xhr.send()
-        }
+          xhr.open("GET", "retr_categories.php")
+          xhr.send()
+      }
     </script>
 
     <script>

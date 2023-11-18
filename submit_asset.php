@@ -1,4 +1,6 @@
 <?php
+// This file used to be a full page, but now it's included from show_assets.php
+
 // Do not run this script if there was no form submission
 if (isset($_POST["friendly-name"])) {
     try {
@@ -61,7 +63,7 @@ if (isset($_POST["friendly-name"])) {
         }
         else {
             echo
-            "<div class='alert alert-danger alert-dismissible'>
+            "<div class='alert alert-danger'>
             <strong>Error:</strong> Couldn't upload photo.
             </div>";
             die();
@@ -107,7 +109,7 @@ if (isset($_POST["friendly-name"])) {
     }
     catch(PDOException $e) {
         echo
-        "<div class='alert alert-danger alert-dismissible'>
+        "<div class='alert alert-danger'>
         <strong>Error:</strong> " . $e->getMessage() .
         "</div>";
     }
