@@ -72,31 +72,31 @@
               <div class="pt-2 pb-2 row">
                   <div class="col">
                       <label for="friendly-name">Name Of Asset</label>
-                      <input type="text" class="form-control" name="friendly-name" id="friendly-name" placeholder="Name Your Asset" required>
+                      <input type="text" class="form-control" name="friendly-name" id="friendly-name" placeholder="Name Your Asset" spellcheck="true" required>
                   </div>
               </div>
               <div class="pt-2 pb-2 row">
                   <div class="col">
                       <label for="manufacturer">Manufacturer</label>
-                      <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="Name Of Manufacturer">
+                      <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="Name Of Manufacturer" spellcheck="true">
                   </div>
               </div>
               <div class="pt-2 pb-2 row">
                   <div class="col">
                       <label for="model">Model</label>
-                      <input type="text" class="form-control" name="model" id="model" placeholder="Name Of Model">
+                      <input type="text" class="form-control" name="model" id="model" placeholder="Name Of Model" spellcheck="true">
                   </div>
               </div>
               <div class="pt-2 pb-2 row">
                   <div class="col">
                       <label for="asset-type">Type Of Asset</label>
-                      <input type="text" class="form-control" name="asset-type" id="asset-type" placeholder="Name Of Asset Type">
+                      <input type="text" class="form-control" name="asset-type" id="asset-type" placeholder="Name Of Asset Type" spellcheck="true">
                   </div>
               </div>
               <div class="pt-2 pb-2 row">
                   <div class="col">
                       <label for="location">Location Of Asset</label>
-                      <input type="text" class="form-control" name="location" id="location" placeholder="Location Of Asset">
+                      <input type="text" class="form-control" name="location" id="location" placeholder="Location Of Asset" spellcheck="true">
                   </div>
               </div>
               <div class="pt-2 pb-2 row">
