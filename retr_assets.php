@@ -1,13 +1,12 @@
-<?php 
+<?php
+header('Content-Type: application/json');
 try {
-    require 'config/db_cfg.php';
+    @require 'config/db_cfg.php';
 }
 catch(Error $e) {
-    echo "Error: Database configuration file cannot be loaded: " . $e->getMessage();
+    echo '[{"ID": "Error", "FriendlyName": "Database configuration file cannot be loaded: ' . str_replace("\\", "/", $e->getMessage()) . '"}]';
     die();
 }
-
-header('Content-Type: application/json');
 
 try {
     $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
@@ -32,7 +31,7 @@ try {
     echo json_encode($response); // Encode the complete SQL response in JSON
 }
 catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    echo '[{"ID": "Error", "FriendlyName": "' . $e->getMessage() . '"}]';
 }
 
 $conn = null;

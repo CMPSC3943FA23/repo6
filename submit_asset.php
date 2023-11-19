@@ -69,6 +69,9 @@ if (isset($_POST["friendly-name"])) {
             die();
         }
     }
+    else {
+        $hashed_name = null;
+    }
 
     try {
         $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
@@ -106,14 +109,15 @@ if (isset($_POST["friendly-name"])) {
         "<div class='alert alert-success alert-dismissible'><button type='button' class='btn-close' data-bs-dismiss='alert'></button>
         Asset <strong>" . $friendly_name . "</strong> with ID <strong>" . $last_id . "</strong> added successfully.
         </div>";
+        $conn = null;
     }
     catch(PDOException $e) {
         echo
         "<div class='alert alert-danger'>
         <strong>Error:</strong> " . $e->getMessage() .
         "</div>";
+        $conn = null;
+        die();
     }
-
-    $conn = null;
 }
 ?>

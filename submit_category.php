@@ -44,14 +44,15 @@ if (isset($_POST["category-title"])) {
         "<div class='alert alert-success alert-dismissible'><button type='button' class='btn-close' data-bs-dismiss='alert'></button>
         Category <strong>" . $category_title . "</strong> with ID <strong>" . $last_id . "</strong> added successfully.
         </div>";
+        $conn = null;
     }
     catch(PDOException $e) {
         echo
         "<div class='alert alert-danger'>
         <strong>Error:</strong> " . $e->getMessage() .
         "</div>";
+        $conn = null;
+        die();
     }
-
-    $conn = null;
 }
 ?>
