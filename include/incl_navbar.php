@@ -16,7 +16,7 @@
                     <a class="nav-link" href="show_assets.php">Asset List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="page_pricing.php">Upgrade</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Support</a>
