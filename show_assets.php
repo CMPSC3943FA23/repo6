@@ -49,7 +49,7 @@
             <th data-field="AssetName" data-sortable="true">Name</th>
             <th data-field="AssetManufacturer" data-sortable="true">Manufacturer</th>
             <th data-field="AssetModel" data-sortable="true">Model</th>
-            <th data-field="AssetType" data-sortable="true">Asset Type</th>
+            <th data-field="AssetType" data-sortable="true">Type</th>
             <th data-field="AssetLocation" data-sortable="true">Location</th>
             <th data-field="CatTitle" data-sortable="true">Category</th>
             <th data-field="AssetPhoto" data-sortable="false">Photo</th>
@@ -71,7 +71,7 @@
             <div class="modal-body">
               <div class="pt-2 pb-2 row">
                   <div class="col">
-                      <label for="friendly-name">Name Of Asset</label>
+                      <label for="friendly-name">Name of asset</label>
                       <input type="text" class="form-control" name="friendly-name" id="friendly-name" placeholder="My Laptop" spellcheck="true" required>
                   </div>
               </div>
@@ -89,13 +89,13 @@
               </div>
               <div class="pt-2 pb-2 row">
                   <div class="col">
-                      <label for="asset-type">Type Of Asset</label>
+                      <label for="asset-type">Type of asset</label>
                       <input type="text" class="form-control" name="asset-type" id="asset-type" placeholder="Computer" spellcheck="true">
                   </div>
               </div>
               <div class="pt-2 pb-2 row">
                   <div class="col">
-                      <label for="location">Location Of Asset</label>
+                      <label for="location">Location of asset</label>
                       <input type="text" class="form-control" name="location" id="location" placeholder="Home" spellcheck="true">
                   </div>
               </div>
@@ -103,7 +103,7 @@
                   <div class="col">
                       <!-- Simple check for filesize -->
                       <input type="hidden" name="MAX_FILE_SIZE" value="16777215">
-                      <label for="photo">Custom Photo</label>
+                      <label for="photo">Custom photo</label>
                       <input type="file" class="form-control" name="photo" id="photo" placeholder="Custom Photo" accept="image/png, image/gif, image/jpeg">
                   </div>
               </div>
