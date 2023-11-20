@@ -4,7 +4,7 @@ try {
     @require 'config/db_cfg.php';
 }
 catch(Error $e) {
-    echo '[{"AssetID": "Error", "AssetName": "Database configuration file cannot be loaded: ' . str_replace("\\", "/", $e->getMessage()) . '"}]';
+    echo '[{"AssetID": "Error", "AssetName": "Database configuration file cannot be loaded: ' . str_replace("\\", "\\\\", $e->getMessage()) . '"}]';
     die();
 }
 
@@ -13,7 +13,8 @@ try {
     $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT * FROM `assets`");
+    // Left join returns all assets plus the names of the categories used
+    $stmt = $conn->prepare("SELECT * FROM `assets` LEFT JOIN `categories` ON `assets`.`AssetCategory`=`categories`.`CatID`;");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 

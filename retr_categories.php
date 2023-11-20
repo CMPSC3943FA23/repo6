@@ -4,7 +4,7 @@ try {
     @require 'config/db_cfg.php';
 }
 catch(Error $e) {
-    echo '[{"CatID": "Error", "CatTitle": "Database configuration file cannot be loaded: ' . str_replace("\\", "/", $e->getMessage()) . '"}]';
+    echo '[{"CatID": "Error", "CatTitle": "Database configuration file cannot be loaded: ' . str_replace("\\", "\\\\", $e->getMessage()) . '"}]';
     die();
 }
 
