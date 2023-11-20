@@ -19,10 +19,11 @@
         <?php
         try {
             require 'config/db_cfg.php';
-        } catch (Error $e) {
+        } 
+        catch (Error $e) {
             echo
                 "<div class='alert alert-danger'>
-            <strong>Error:</strong> Database configuration file cannot be loaded: " . $e->getMessage() .
+                <strong>Error:</strong> Database configuration file cannot be loaded: " . $e->getMessage() .
                 "</div>";
             die();
         }
@@ -51,7 +52,8 @@
                 "<a class='btn btn-success' href='db_init.php'>Reinitialize</a>";
     
             $conn = null;
-        } else { ?>
+        } 
+        else { ?>
             <div class="col">
                 <form method="post">
                     <p>
@@ -97,9 +99,7 @@
                     }
                 })
             </script>
-            <?php
-        }
-        ?>
+        <?php } ?>
     </div>
 </body>
 
