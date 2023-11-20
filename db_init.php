@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <?php include("include/incl_navbar.php"); ?>
     <div class="container">
         <div class="pt-4 pb-4 row">
             <h1>Database Initialization</h1>
@@ -42,8 +44,8 @@
 
             // Create table categories
             $sql = "CREATE TABLE IF NOT EXISTS `categories` (
-                `ID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                `Title` varchar(255) NOT NULL
+                `CatID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                `CatTitle` varchar(255) NOT NULL
                 )";
                 $conn->exec($sql);
                 echo
@@ -53,15 +55,15 @@
 
             // Create table assets
             $sql = "CREATE TABLE IF NOT EXISTS `assets` (
-            `ID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-            `FriendlyName` varchar(255) NOT NULL,
-            `Manufacturer` varchar(255),
-            `Model` varchar(255),
+            `AssetID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            `AssetName` varchar(255) NOT NULL,
+            `AssetManufacturer` varchar(255),
+            `AssetModel` varchar(255),
             `AssetType` varchar(255),
-            `Location` varchar(255),
-            `Category` int,
-            `Photo` varchar(255),
-            FOREIGN KEY (`Category`) REFERENCES `categories`(`ID`)
+            `AssetLocation` varchar(255),
+            `AssetCategory` int,
+            `AssetPhoto` varchar(255),
+            FOREIGN KEY (`AssetCategory`) REFERENCES `categories`(`CatID`)
             )";
             $conn->exec($sql);
             echo
@@ -70,7 +72,7 @@
             </div>";
 
             echo
-            "<a class='btn btn-success' href='create_asset.html'>Continue</a>";
+            "<a class='btn btn-success' href='show_assets.php'>Continue</a>";
         }
         catch(PDOException $e) {
             echo

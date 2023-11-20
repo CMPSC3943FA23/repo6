@@ -41,18 +41,18 @@
       <table id="table" class="table table-striped table-responsive-md" 
       data-toggle="table" data-url="retr_assets.php" data-pagination="true" data-search="true"
       data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true"
-      data-show-export="true" data-id-field="ID" data-page-list="[10, 25, 50, 100, all]" data-toolbar="#toolbar"
+      data-show-export="true" data-id-field="AssetID" data-page-list="[10, 25, 50, 100, all]" data-toolbar="#toolbar"
       data-export-types="['json', 'xml', 'csv', 'sql', 'excel', 'pdf']">
         <thead>
           <tr>
-            <th data-field="ID" data-sortable="true">ID</th>
-            <th data-field="FriendlyName" data-sortable="true">Name</th>
-            <th data-field="Manufacturer" data-sortable="true">Manufacturer</th>
-            <th data-field="Model" data-sortable="true">Model</th>
+            <th data-field="AssetID" data-sortable="true">ID</th>
+            <th data-field="AssetName" data-sortable="true">Name</th>
+            <th data-field="AssetManufacturer" data-sortable="true">Manufacturer</th>
+            <th data-field="AssetModel" data-sortable="true">Model</th>
             <th data-field="AssetType" data-sortable="true">Asset Type</th>
-            <th data-field="Location" data-sortable="true">Location</th>
-            <th data-field="Category" data-sortable="true">Category</th>
-            <th data-field="Photo" data-sortable="false">Photo</th>
+            <th data-field="AssetLocation" data-sortable="true">Location</th>
+            <th data-field="CatTitle" data-sortable="true">Category</th>
+            <th data-field="AssetPhoto" data-sortable="false">Photo</th>
           </tr>
         </thead>
       </table>
@@ -114,8 +114,8 @@
                       <select id="category" name="category" class="form-select" style="display: inline;">
                           <option id="cat-blank" value="">Populating list...</option>
                       </select>
-                      <span id="cat-refresh-button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></span> <!-- We don't want to use a button because we don't want to submit -->
-                      <span id="cat-edit-button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></span>
+                      <button type="button" id="cat-refresh-button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></span>
+                      <button type="button" id="cat-edit-button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></span>
                   </div>
               </div>
             </div>
@@ -155,8 +155,8 @@
               // Draw each option
               for (let cat of catList) {
                   const newOption = document.createElement("option")
-                  newOption.value = cat["ID"]
-                  newOption.innerHTML = cat["Title"]
+                  newOption.value = cat["CatID"]
+                  newOption.innerHTML = cat["CatTitle"]
                   catBox.appendChild(newOption)
               }
 

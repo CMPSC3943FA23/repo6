@@ -79,13 +79,13 @@ if (isset($_POST["friendly-name"])) {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("INSERT INTO `assets` (
-            `FriendlyName`,
-            `Manufacturer`,
-            `Model`,
+            `AssetName`,
+            `AssetManufacturer`,
+            `AssetModel`,
             `AssetType`,
-            `Location`,
-            `Photo`,
-            `Category`)
+            `AssetLocation`,
+            `AssetPhoto`,
+            `AssetCategory`)
             VALUES (
             :friendly_name,
             :manufacturer,

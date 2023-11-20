@@ -26,11 +26,11 @@
       <table id="table" class="table table-striped table-responsive-md" 
       data-toggle="table" data-url="retr_categories.php" data-pagination="true" data-search="true"
       data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true"
-      data-id-field="ID" data-page-list="[10, 25, 50, 100, all]" data-toolbar="#toolbar">
+      data-id-field="CatID" data-page-list="[10, 25, 50, 100, all]" data-toolbar="#toolbar">
         <thead>
           <tr>
-            <th data-field="ID" data-sortable="true">ID</th>
-            <th data-field="Title" data-sortable="true">Category Title</th>
+            <th data-field="CatID" data-sortable="true">ID</th>
+            <th data-field="CatTitle" data-sortable="true">Title</th>
           </tr>
         </thead>
       </table>
@@ -50,7 +50,7 @@
               <div class="pt-2 pb-2 row">
                 <div class="col">
                   <label for="category-title">Category Title</label>
-                  <input type="text" class="form-control" name="category-title" id="category-title" placeholder="Laptop" required>
+                  <input type="text" class="form-control" name="category-title" id="category-title" placeholder="Laptop" spellcheck="true" required>
                 </div>
               </div>
             </div>

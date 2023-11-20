@@ -4,7 +4,7 @@ try {
     @require 'config/db_cfg.php';
 }
 catch(Error $e) {
-    echo '[{"ID": "Error", "FriendlyName": "Database configuration file cannot be loaded: ' . str_replace("\\", "/", $e->getMessage()) . '"}]';
+    echo '[{"AssetID": "Error", "AssetName": "Database configuration file cannot be loaded: ' . str_replace("\\", "/", $e->getMessage()) . '"}]';
     die();
 }
 
@@ -22,16 +22,16 @@ try {
 	// Convert image filenames to usable <img> tags
     // This should really be done client-side, but I couldn't find an easy way to do that
 	for ($i = 0; $i < sizeof($response); $i++) {
-		$photoFilename = $response[$i]["Photo"];
+		$photoFilename = $response[$i]["AssetPhoto"];
         if ($photoFilename != "") {
-		    $response[$i]["Photo"] = "<a href='uploads/" . $photoFilename . "'><img src='uploads/" . $photoFilename . "' alt='" . $photoFilename . "'></a>";
+		    $response[$i]["AssetPhoto"] = "<a href='uploads/" . $photoFilename . "'><img src='uploads/" . $photoFilename . "' alt='" . $photoFilename . "'></a>";
         }
 	}
 
     echo json_encode($response); // Encode the complete SQL response in JSON
 }
 catch(PDOException $e) {
-    echo '[{"ID": "Error", "FriendlyName": "' . $e->getMessage() . '"}]';
+    echo '[{"AssetID": "Error", "AssetName": "' . $e->getMessage() . '"}]';
 }
 
 $conn = null;

@@ -4,7 +4,7 @@ try {
     @require 'config/db_cfg.php';
 }
 catch(Error $e) {
-    echo '[{"ID": "Error", "Title": "Database configuration file cannot be loaded: ' . str_replace("\\", "/", $e->getMessage()) . '"}]';
+    echo '[{"CatID": "Error", "CatTitle": "Database configuration file cannot be loaded: ' . str_replace("\\", "/", $e->getMessage()) . '"}]';
     die();
 }
 
@@ -20,7 +20,7 @@ try {
     echo json_encode($stmt->fetchAll()); // Encode the complete SQL response in JSON
 }
 catch(PDOException $e) {
-    echo '[{"ID": "Error", "Title": "' . $e->getMessage() . '"}]';
+    echo '[{"CatID": "Error", "CatTitle": "' . $e->getMessage() . '"}]';
 }
 
 $conn = null;

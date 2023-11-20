@@ -33,7 +33,7 @@ if (isset($_POST["category-title"])) {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("INSERT INTO `categories` (
-            `Title`)
+            `CatTitle`)
             VALUES (
             :category_title);");
             
