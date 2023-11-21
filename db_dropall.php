@@ -30,7 +30,7 @@
 
         if (isset($_POST["confirm"]) && $_POST["confirm"] == True) {
             try {
-                // Create database
+                // Delete database
                 $conn = new PDO("mysql:host=$dbhost", $dbuser, $dbpass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
