@@ -13,8 +13,17 @@ try {
     $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Left join returns all assets plus the names of the categories used
-    $stmt = $conn->prepare("SELECT * FROM `assets` LEFT JOIN `categories` ON `assets`.`AssetCategory`=`categories`.`CatID`;");
+
+    if (isset($_GET["id"])) {
+        // Retrieve single asset
+        $id = $_GET["id"];
+        $stmt = $conn->prepare("SELECT * FROM `assets` LEFT JOIN `categories` ON `assets`.`AssetCategory`=`categories`.`CatID` WHERE `AssetID` = :asset_id;");
+        $stmt->execute(['asset_id' => $id]);
+    }
+    else {
+        // Left join returns all assets plus the names of the categories used
+        $stmt = $conn->prepare("SELECT * FROM `assets` LEFT JOIN `categories` ON `assets`.`AssetCategory`=`categories`.`CatID`;");
+    }
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
