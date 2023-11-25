@@ -39,7 +39,7 @@
         <button id="add-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-form"><i class="bi bi-plus-lg"></i></button>
       </div>
       <table id="table" class="table table-striped table-responsive-md" 
-      data-toggle="table" data-url="retr_assets.php" data-pagination="true" data-search="true"
+      data-toggle="table" data-url="retr_assets.php?links=true" data-pagination="true" data-search="true"
       data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-columns-toggle-all="true"
       data-show-export="true" data-id-field="AssetID" data-page-list="[10, 25, 50, 100, all]" data-toolbar="#toolbar"
       data-export-types="['json', 'xml', 'csv', 'sql', 'excel', 'pdf']">

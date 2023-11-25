@@ -29,14 +29,21 @@ try {
 
     $response = $stmt->fetchAll();
 
-	// Convert image filenames to usable <img> tags
-    // This should really be done client-side, but I couldn't find an easy way to do that
-	for ($i = 0; $i < sizeof($response); $i++) {
-		$photoFilename = $response[$i]["AssetPhoto"];
-        if ($photoFilename != "") {
-		    $response[$i]["AssetPhoto"] = "<a href='uploads/" . $photoFilename . "'><img src='uploads/" . $photoFilename . "' alt='" . $photoFilename . "'></a>";
+    if (isset($_GET["links"]) && $_GET["links"] == "true") {
+        for ($i = 0; $i < sizeof($response); $i++) {
+            $assetID = $response[$i]["AssetID"];
+            $assetName = $response[$i]["AssetName"];
+            $photoFilename = $response[$i]["AssetPhoto"];
+
+            // Convert asset names to links to their details
+            $response[$i]["AssetName"] = "<a href='show_asset_details.php?id=" . $assetID ."'>" . $assetName . "</a>";
+
+            if ($photoFilename != "") {
+                // Convert image filenames to usable <img> tags
+                $response[$i]["AssetPhoto"] = "<a href='uploads/" . $photoFilename . "'><img src='uploads/" . $photoFilename . "' alt='" . $photoFilename . "'></a>";
+            }
         }
-	}
+    }
 
     echo json_encode($response); // Encode the complete SQL response in JSON
 }
