@@ -65,7 +65,7 @@
                   <label for="item-price">Item Price</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" name="item-price" id="item-price" placeholder="200.00" min="0" value="0.00" step="0.01" required>
+                    <input type="number" class="form-control" name="item-price" id="item-price" placeholder="200.00" min="0" step="0.01" required>
                   </div>
                 </div>
               </div>
