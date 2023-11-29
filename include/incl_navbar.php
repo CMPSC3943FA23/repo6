@@ -13,7 +13,10 @@
                     <a class="nav-link" href="./">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="show_assets.php">Asset List</a>
+                    <a class="nav-link" href="show_assets.php">Assets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="show_wishlist.php">Wishlist</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="page_pricing.php">Upgrade</a>

@@ -71,6 +71,19 @@
             Table <strong>assets</strong> created successfully.
             </div>";
 
+            // Create table wishlist
+            $sql = "CREATE TABLE IF NOT EXISTS `wishlist` (
+                `WishID` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                `WishName` varchar(255) NOT NULL,
+                `WishDesc` text,
+                `WishPrice` decimal(10,2)
+                )";
+            $conn->exec($sql);
+            echo
+            "<div class='alert alert-success'>
+            Table <strong>wishlist</strong> created successfully.
+            </div>";
+
             echo
             "<a class='btn btn-success' href='show_assets.php'>Continue</a>";
         }
