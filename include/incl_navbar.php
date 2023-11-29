@@ -19,7 +19,7 @@
                     <a class="nav-link" href="page_pricing.php">Upgrade</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Support</a>
+                    <a class="nav-link" href="page_support.php">Support</a>
                 </li>
                 <li class="nav-item">
                     <a id="dark-mode-button" class="nav-link" href="#"><i id="dark-mode-icon" class="bi bi-lightbulb"></i></a>

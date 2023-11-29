@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+    <?php include("include/incl_navbar.php"); ?>
 
     <!-- Main Content Area -->
     <div class="container mt-5">
@@ -17,7 +21,7 @@
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             What is the difference between the standard and premium plans?
                         </button>
                     </h5>
@@ -30,35 +34,36 @@
             </div>
             <!-- FAQ Item 2 -->
             <div class="card">
-                <div class="card-header" id="headingOne">
+                <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                             How can I contact customer support?
                         </button>
                     </h5>
                 </div>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
                     <div class="card-body">
                         You can use the "contact us" portion of this page to send an email and a representative will get back with you shortly.
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- FAQ Item 3 -->
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        What options are there for sharing my hobby list?
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqAccordion">
-                <div class="card-body">
-                    We offer many different options including, PDF, SQL, XML, etc.
+            <!-- FAQ Item 3 -->
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            What options are there for sharing my hobby list?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        We offer many different options including, PDF, SQL, XML, etc.
+                    </div>
                 </div>
             </div>
         </div>
+        
 
         <!-- Contact Form -->
         <h2 class="mt-5">Contact Us</h2>
